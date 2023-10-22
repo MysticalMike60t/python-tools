@@ -1,6 +1,5 @@
 import tkinter as tk
-from tkinter import ttk
-from tkinter import filedialog
+from tkinter import ttk, filedialog
 from PIL import Image
 from ttkthemes import ThemedStyle
 
@@ -31,7 +30,7 @@ def convert_image():
 app = tk.Tk()
 app.title("Image Format Converter")
 
-# Apply a Windows 11-style theme using ttkthemes
+# Apply a modern theme using ttkthemes
 style = ThemedStyle(app)
 style.set_theme("vista")
 
@@ -39,24 +38,27 @@ style.set_theme("vista")
 frame = ttk.Frame(app)
 frame.grid(row=0, column=0, padx=10, pady=10)
 
+# Input Format
 input_format_label = ttk.Label(frame, text="Input Format:")
-input_format_var = tk.StringVar()
-input_format_combobox = ttk.Combobox(frame, textvariable=input_format_var, values=list(image_formats.keys()))
-input_format_combobox.set("ICO")
+input_format_var = ttk.Combobox(frame, values=list(image_formats.keys()))
+input_format_var.set("ICO")
 
+# Output Format
 output_format_label = ttk.Label(frame, text="Output Format:")
-output_format_var = tk.StringVar()
-output_format_combobox = ttk.Combobox(frame, textvariable=output_format_var, values=list(image_formats.keys()))
-output_format_combobox.set("PNG")
+output_format_var = ttk.Combobox(frame, values=list(image_formats.keys()))
+output_format_var.set("PNG")
 
+# Convert Button
 convert_button = ttk.Button(frame, text="Convert Image", command=convert_image)
+
+# Result Label
 result_label = ttk.Label(frame, text="")
 
 # Layout widgets
 input_format_label.grid(row=0, column=0, padx=10, pady=10, sticky="w")
-input_format_combobox.grid(row=0, column=1, padx=10, pady=10)
+input_format_var.grid(row=0, column=1, padx=10, pady=10)
 output_format_label.grid(row=1, column=0, padx=10, pady=10, sticky="w")
-output_format_combobox.grid(row=1, column=1, padx=10, pady=10)
+output_format_var.grid(row=1, column=1, padx=10, pady=10)
 convert_button.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
 result_label.grid(row=3, column=0, columnspan=2, padx=10, pady=10)
 
