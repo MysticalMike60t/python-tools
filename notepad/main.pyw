@@ -1,23 +1,29 @@
-from tkinter import filedialog
-from tkinter import Tk, Menu, Text
+import tkinter as tk
+from tkinter import filedialog, Text, Menu
+from tkinter import ttk
 
 def open_file():
     file_path = filedialog.askopenfilename()
     if file_path:
         with open(file_path, 'r') as file:
-            text.delete('1.0', Tk().END)
-            text.insert(Tk().END, file.read())
+            text.delete('1.0', tk.END)
+            text.insert(tk.END, file.read())
 
 def save_file(event=None):
     file_path = filedialog.asksaveasfilename(defaultextension=".txt")
     if file_path:
         with open(file_path, 'w') as file:
-            file.write(text.get('1.0', Tk().END))
+            file.write(text.get('1.0', tk.END))
 
-app = Tk()
-app.title("Notepad")
+app = tk.Tk()
+app.geometry("800x600")
 
 app.iconbitmap('./lib/icons/note.ico')
+
+style = ttk.Style()
+style.theme_use('clam')
+
+app.title("Notepad")
 
 menu = Menu(app)
 app.config(menu=menu)
@@ -29,7 +35,10 @@ file_menu.add_command(label="Save", command=save_file)
 
 app.bind("<Control-s>", save_file)
 
-text = Text(app)
-text.pack()
+frame = ttk.Frame(app)
+frame.pack(fill=tk.BOTH, expand=True)
+
+text = Text(frame)
+text.pack(fill=tk.BOTH, expand=True)
 
 app.mainloop()
