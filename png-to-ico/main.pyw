@@ -30,6 +30,9 @@ def convert_image():
 app = tk.Tk()
 app.title("Custom Image Format Converter")
 
+# Change the window icon
+app.iconbitmap("./lib/icons/convert.ico")  # Replace "your_icon.ico" with the path to your icon file
+
 # Apply a modern theme using ttkthemes
 style = ThemedStyle(app)
 style.set_theme("vista")
@@ -64,11 +67,15 @@ result_label = ttk.Label(frame, text="")
 
 # Layout widgets
 input_format_label.grid(row=0, column=0, padx=10, pady=10, sticky="w")
-input_format_var.grid(row=0, column=1, padx=10, pady=10)
+input_format_var.grid(row=0, column=1, padx=10, pady=10, sticky="w")
 output_format_label.grid(row=1, column=0, padx=10, pady=10, sticky="w")
-output_format_var.grid(row=1, column=1, padx=10, pady=10)
+output_format_var.grid(row=1, column=1, padx=10, pady=10, sticky="w")
 convert_button.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
 result_label.grid(row=3, column=0, columnspan=2, padx=10, pady=10)
+
+# Create a centered label to act as a spacer
+center_label = ttk.Label(frame, text="", width=20)
+center_label.grid(row=0, column=2, rowspan=4)
 
 # Start the GUI application
 app.mainloop()
