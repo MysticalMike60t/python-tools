@@ -28,7 +28,7 @@ def convert_image():
 
 # Create the main application window
 app = tk.Tk()
-app.title("Image Format Converter")
+app.title("Custom Image Format Converter")
 
 # Apply a modern theme using ttkthemes
 style = ThemedStyle(app)
@@ -36,7 +36,15 @@ style.set_theme("vista")
 
 # Create and configure widgets
 frame = ttk.Frame(app)
-frame.grid(row=0, column=0, padx=10, pady=10)
+frame.grid(row=1, column=0, padx=10, pady=10, sticky="nsew")
+
+# Custom Header Frame
+header_frame = ttk.Frame(app)
+header_frame.grid(row=0, column=0, padx=10, pady=10, sticky="ew")
+
+# Custom Header Title
+header_title = ttk.Label(header_frame, text="Custom Image Format Converter", font=("Helvetica", 16, "bold"))
+header_title.grid(row=0, column=0, padx=10, pady=10)
 
 # Input Format
 input_format_label = ttk.Label(frame, text="Input Format:")
