@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog
 from PIL import Image
+from ttkthemes import ThemedStyle
 
 # Supported image formats
 image_formats = {
@@ -30,13 +31,11 @@ def convert_image():
 app = tk.Tk()
 app.title("Image Format Converter")
 
-# Modern styles
-style = ttk.Style()
-style.configure("TButton", padding=5, font=("Helvetica", 12))
-style.configure("TLabel", font=("Helvetica", 12))
-style.configure("TFrame", background="#f0f0f0")
+# Apply a Windows 11-style theme using ttkthemes
+style = ThemedStyle(app)
+style.set_theme("vista")
 
-# Create and configure widgets with modern styles
+# Create and configure widgets
 frame = ttk.Frame(app)
 frame.grid(row=0, column=0, padx=10, pady=10)
 
@@ -51,9 +50,9 @@ output_format_combobox = ttk.Combobox(frame, textvariable=output_format_var, val
 output_format_combobox.set("PNG")
 
 convert_button = ttk.Button(frame, text="Convert Image", command=convert_image)
-result_label = ttk.Label(frame, text="", font=("Helvetica", 12))
+result_label = ttk.Label(frame, text="")
 
-# Layout widgets with modern styling
+# Layout widgets
 input_format_label.grid(row=0, column=0, padx=10, pady=10, sticky="w")
 input_format_combobox.grid(row=0, column=1, padx=10, pady=10)
 output_format_label.grid(row=1, column=0, padx=10, pady=10, sticky="w")
